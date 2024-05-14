@@ -1,13 +1,58 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/app.js":
 /*!********************!*\
   !*** ./src/app.js ***!
   \********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-console.log("test");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/addNewItem */ "./src/modules/addNewItem.js");
+// console.log("test");
+
+document.getElementById("save-btn").addEventListener("click", function (e) {
+  console.log("button clicked");
+  e.preventDefault();
+  (0,_modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__["default"])();
+});
+
+/***/ }),
+
+/***/ "./src/modules/addNewItem.js":
+/*!***********************************!*\
+  !*** ./src/modules/addNewItem.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var addNewItem = function addNewItem() {
+  if (document.getElementById("new-item-form").checkValidity()) {
+    var itemRow = document.createElement("tr");
+    var checkmark = document.createElement("th");
+    checkmark.setAttribute("scope", "row");
+    checkmark.innerHTML = "<a href=\"#\" id=\"ckeckmark\" class=\"list-table__unchecked\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"16\"\n        height=\"16\"\n        fill=\"currentColor\"\n        class=\"bi bi-check\"\n        viewBox=\"0 0 16 16\"\n      >\n        <path d=\"M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z\" />\n      </svg>\n    </a>";
+    itemRow.appendChild(checkmark);
+    var taskTitle = document.createElement("td");
+    taskTitle.textContent = document.getElementById("subject").value;
+    itemRow.appendChild(taskTitle);
+    var dueDate = document.createElement("td");
+    dueDate.textContent = document.getElementById("due-date").value;
+    itemRow.appendChild(dueDate);
+    var itemStatus = document.createElement("td");
+    itemStatus.textContent = document.getElementById("status").value;
+    itemRow.appendChild(itemStatus);
+    document.getElementById("table-body").appendChild(itemRow);
+    console.log("item added");
+  } else {
+    alert("All fields are required.");
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNewItem);
 
 /***/ }),
 
@@ -17,7 +62,6 @@ console.log("test");
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -83,6 +127,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
 /******/ 		};
 /******/ 	})();
 /******/ 	

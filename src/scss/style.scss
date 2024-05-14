@@ -1,1 +1,14 @@
 @import '~bootstrap';
+$grey: #708090;
+
+.list-table {
+
+    &__unchecked,
+    &__unchecked:link,
+    &__unchecked:visited,
+    &__unchecked:hover,
+    &__unchecked:active {
+        color: $grey;
+        cursor: pointer;
+    }
+}

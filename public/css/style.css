@@ -11965,3 +11965,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.list-table__unchecked, .list-table__unchecked:link, .list-table__unchecked:visited, .list-table__unchecked:hover, .list-table__unchecked:active {
+  color: #708090;
+  cursor: pointer;
+}
