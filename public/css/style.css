@@ -11965,6 +11965,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.list-table__clickable {
+  cursor: pointer;
+}
 .list-table__unchecked, .list-table__unchecked:link, .list-table__unchecked:visited, .list-table__unchecked:hover, .list-table__unchecked:active {
   color: #aeb7c1;
   cursor: pointer;

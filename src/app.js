@@ -2,6 +2,7 @@
 import addNewItem from "./modules/addNewItem";
 import completeItem from "./modules/completeItem";
 import reverseCompletion from "./modules/completionReverse";
+import changeStatus from "./modules/changeStatus";
 
 document.getElementById("save-btn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -16,5 +17,11 @@ document.querySelector("tbody").addEventListener("click", (e) => {
     } else {
       reverseCompletion(e);
     }
+  }
+  if (
+    e.target.matches("td:nth-child(4)") &&
+    !e.target.classList.contains("list-table__greyed")
+  ) {
+    changeStatus(e);
   }
 });

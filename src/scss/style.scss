@@ -6,6 +6,10 @@ $pink: #d87093;
 
 .list-table {
 
+    &__clickable {
+        cursor: pointer;
+    }
+
     &__unchecked,
     &__unchecked:link,
     &__unchecked:visited,

@@ -12,7 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/addNewItem */ "./src/modules/addNewItem.js");
 /* harmony import */ var _modules_completeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/completeItem */ "./src/modules/completeItem.js");
 /* harmony import */ var _modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/completionReverse */ "./src/modules/completionReverse.js");
+/* harmony import */ var _modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/changeStatus */ "./src/modules/changeStatus.js");
 // console.log("test");
+
 
 
 
@@ -28,6 +30,9 @@ document.querySelector("tbody").addEventListener("click", function (e) {
     } else {
       (0,_modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__["default"])(e);
     }
+  }
+  if (e.target.matches("td:nth-child(4)") && !e.target.classList.contains("list-table__greyed")) {
+    (0,_modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__["default"])(e);
   }
 });
 
@@ -58,6 +63,7 @@ var addNewItem = function addNewItem() {
     itemRow.appendChild(dueDate);
     var itemStatus = document.createElement("td");
     itemStatus.textContent = document.getElementById("status").value;
+    itemStatus.classList.add("list-table__clickable");
     itemRow.appendChild(itemStatus);
     document.getElementById("table-body").appendChild(itemRow);
   } else {
@@ -65,6 +71,35 @@ var addNewItem = function addNewItem() {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNewItem);
+
+/***/ }),
+
+/***/ "./src/modules/changeStatus.js":
+/*!*************************************!*\
+  !*** ./src/modules/changeStatus.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _completeItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./completeItem */ "./src/modules/completeItem.js");
+
+var changeStatus = function changeStatus(e) {
+  var availableStatuses = ["New", "In Progress", "Completed"];
+  var updatedStatus = e.target;
+  updatedStatus.classList.remove("list-table__attention");
+  if (availableStatuses.includes(updatedStatus.textContent)) {
+    var statusIndex = availableStatuses.indexOf(updatedStatus.textContent);
+    if (availableStatuses[statusIndex + 1] === "Completed") {
+      updatedStatus.textContent = availableStatuses[(statusIndex + 0) % availableStatuses.length];
+    } else {
+      updatedStatus.textContent = availableStatuses[(statusIndex + 1) % availableStatuses.length];
+    }
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (changeStatus);
 
 /***/ }),
 

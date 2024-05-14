@@ -22,6 +22,7 @@ const addNewItem = () => {
     itemRow.appendChild(dueDate);
     const itemStatus = document.createElement("td");
     itemStatus.textContent = document.getElementById("status").value;
+    itemStatus.classList.add("list-table__clickable");
     itemRow.appendChild(itemStatus);
     document.getElementById("table-body").appendChild(itemRow);
   } else {
