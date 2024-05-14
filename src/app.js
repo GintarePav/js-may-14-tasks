@@ -1,6 +1,7 @@
 // console.log("test");
 import addNewItem from "./modules/addNewItem";
 import completeItem from "./modules/completeItem";
+import reverseCompletion from "./modules/completionReverse";
 
 document.getElementById("save-btn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -8,9 +9,12 @@ document.getElementById("save-btn").addEventListener("click", (e) => {
 });
 
 document.querySelector("tbody").addEventListener("click", (e) => {
-  if (e.target.matches(".svg")) {
-    console.log("checkmark clicked");
+  if (e.target.matches("svg")) {
     e.preventDefault();
-    completeItem(e);
+    if (e.target.classList.contains("list-table__unchecked")) {
+      completeItem(e);
+    } else {
+      reverseCompletion(e);
+    }
   }
 });

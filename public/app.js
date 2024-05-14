@@ -11,7 +11,9 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/addNewItem */ "./src/modules/addNewItem.js");
 /* harmony import */ var _modules_completeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/completeItem */ "./src/modules/completeItem.js");
+/* harmony import */ var _modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/completionReverse */ "./src/modules/completionReverse.js");
 // console.log("test");
+
 
 
 document.getElementById("save-btn").addEventListener("click", function (e) {
@@ -19,10 +21,13 @@ document.getElementById("save-btn").addEventListener("click", function (e) {
   (0,_modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
 document.querySelector("tbody").addEventListener("click", function (e) {
-  if (e.target.matches(".svg")) {
-    console.log("checkmark clicked");
+  if (e.target.matches("svg")) {
     e.preventDefault();
-    (0,_modules_completeItem__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
+    if (e.target.classList.contains("list-table__unchecked")) {
+      (0,_modules_completeItem__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
+    } else {
+      (0,_modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__["default"])(e);
+    }
   }
 });
 
@@ -87,6 +92,33 @@ var completeItem = function completeItem(e) {
   status.textContent = "Completed";
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (completeItem);
+
+/***/ }),
+
+/***/ "./src/modules/completionReverse.js":
+/*!******************************************!*\
+  !*** ./src/modules/completionReverse.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var reverseCompletion = function reverseCompletion(e) {
+  var checkmark = e.target;
+  var currentRow = checkmark.closest("tr");
+  checkmark.classList.remove("list-table__checked");
+  checkmark.classList.add("list-table__unchecked");
+  var taskTitle = currentRow.querySelector("td:nth-child(2)");
+  taskTitle.classList.remove("list-table__crossed", "list-table__greyed");
+  var dueDate = currentRow.querySelector("td:nth-child(3)");
+  dueDate.classList.remove("list-table__greyed");
+  var status = currentRow.querySelector("td:nth-child(4)");
+  status.classList.remove("list-table__greyed");
+  status.classList.add("list-table__attention");
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reverseCompletion);
 
 /***/ }),
 

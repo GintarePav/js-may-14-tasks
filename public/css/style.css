@@ -11979,3 +11979,7 @@ textarea.form-control-lg {
 .list-table__greyed {
   color: #aeb7c1 !important;
 }
+.list-table__attention {
+  color: #d87093 !important;
+  font-weight: bold;
+}

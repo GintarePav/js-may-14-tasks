@@ -1,6 +1,8 @@
 @import '~bootstrap';
 $grey: #aeb7c1;
 $teal: #3e9c9f;
+$pink: #d87093;
+
 
 .list-table {
 
@@ -28,6 +30,11 @@ $teal: #3e9c9f;
 
     &__greyed {
         color: $grey !important;
+    }
+
+    &__attention {
+        color: $pink !important;
+        font-weight: bold;
     }
 
 
