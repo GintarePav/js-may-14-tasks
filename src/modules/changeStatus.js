@@ -1,5 +1,3 @@
-import completeItem from "./completeItem";
-
 const changeStatus = (e) => {
   const availableStatuses = ["New", "In Progress", "Completed"];
   const updatedStatus = e.target;

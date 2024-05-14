@@ -12010,7 +12010,7 @@ textarea.form-control-lg {
 }
 
 .list-table {
-  width: 80%;
+  width: 100%;
   height: -moz-max-content;
   height: max-content;
   margin: auto;

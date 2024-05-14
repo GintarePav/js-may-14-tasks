@@ -8,6 +8,7 @@ const completeItem = (e) => {
   const dueDate = currentRow.querySelector("td:nth-child(3)");
   dueDate.classList.add("list-table__greyed");
   const status = currentRow.querySelector("td:nth-child(4)");
+  status.classList.remove("list-table__attention");
   status.classList.add("list-table__greyed");
   status.textContent = "Completed";
 };

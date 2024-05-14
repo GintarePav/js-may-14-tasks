@@ -4,6 +4,7 @@ import completeItem from "./modules/completeItem";
 import reverseCompletion from "./modules/completionReverse";
 import changeStatus from "./modules/changeStatus";
 import saveTable from "./modules/saveToLocalStorage";
+import removeTask from "./modules/deleteTask";
 
 document.getElementById("save-btn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -12,7 +13,7 @@ document.getElementById("save-btn").addEventListener("click", (e) => {
 });
 
 document.querySelector("tbody").addEventListener("click", (e) => {
-  if (e.target.matches("svg")) {
+  if (e.target.matches(".svg")) {
     e.preventDefault();
     if (e.target.classList.contains("list-table__unchecked")) {
       completeItem(e);
@@ -27,6 +28,11 @@ document.querySelector("tbody").addEventListener("click", (e) => {
     !e.target.classList.contains("list-table__greyed")
   ) {
     changeStatus(e);
+    saveTable();
+  }
+
+  if (e.target.matches(".bin")) {
+    removeTask(e);
     saveTable();
   }
 });

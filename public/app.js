@@ -14,7 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/completionReverse */ "./src/modules/completionReverse.js");
 /* harmony import */ var _modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/changeStatus */ "./src/modules/changeStatus.js");
 /* harmony import */ var _modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/saveToLocalStorage */ "./src/modules/saveToLocalStorage.js");
+/* harmony import */ var _modules_deleteTask__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/deleteTask */ "./src/modules/deleteTask.js");
 // console.log("test");
+
 
 
 
@@ -26,7 +28,7 @@ document.getElementById("save-btn").addEventListener("click", function (e) {
   (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
 });
 document.querySelector("tbody").addEventListener("click", function (e) {
-  if (e.target.matches("svg")) {
+  if (e.target.matches(".svg")) {
     e.preventDefault();
     if (e.target.classList.contains("list-table__unchecked")) {
       (0,_modules_completeItem__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
@@ -38,6 +40,10 @@ document.querySelector("tbody").addEventListener("click", function (e) {
   }
   if (e.target.matches("td:nth-child(4)") && !e.target.classList.contains("list-table__greyed")) {
     (0,_modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__["default"])(e);
+    (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  }
+  if (e.target.matches(".bin")) {
+    (0,_modules_deleteTask__WEBPACK_IMPORTED_MODULE_5__["default"])(e);
     (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
   }
 });
@@ -74,6 +80,10 @@ var addNewItem = function addNewItem() {
     itemStatus.textContent = document.getElementById("status").value;
     itemStatus.classList.add("list-table__clickable");
     itemRow.appendChild(itemStatus);
+    var removeBin = document.createElement("th");
+    removeBin.setAttribute("scope", "row");
+    removeBin.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash bin\" viewBox=\"0 0 16 16\">\n    <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z\"/>\n    <path d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z\"/>\n  </svg>";
+    itemRow.appendChild(removeBin);
     document.getElementById("table-body").appendChild(itemRow);
   } else {
     alert("All fields are required.");
@@ -93,8 +103,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _completeItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./completeItem */ "./src/modules/completeItem.js");
-
 var changeStatus = function changeStatus(e) {
   var availableStatuses = ["New", "In Progress", "Completed"];
   var updatedStatus = e.target;
@@ -132,6 +140,7 @@ var completeItem = function completeItem(e) {
   var dueDate = currentRow.querySelector("td:nth-child(3)");
   dueDate.classList.add("list-table__greyed");
   var status = currentRow.querySelector("td:nth-child(4)");
+  status.classList.remove("list-table__attention");
   status.classList.add("list-table__greyed");
   status.textContent = "Completed";
 };
@@ -163,6 +172,24 @@ var reverseCompletion = function reverseCompletion(e) {
   status.classList.add("list-table__attention");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reverseCompletion);
+
+/***/ }),
+
+/***/ "./src/modules/deleteTask.js":
+/*!***********************************!*\
+  !*** ./src/modules/deleteTask.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var removeTask = function removeTask(e) {
+  var rowToRemove = e.target.closest("tr");
+  rowToRemove.remove();
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (removeTask);
 
 /***/ }),
 
