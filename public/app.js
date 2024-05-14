@@ -107,12 +107,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var changeStatus = function changeStatus(e) {
-  var availableStatuses = ["New", "In Progress", "Completed"];
+  var availableStatuses = ["New", "In Progress", "Complete"];
   var updatedStatus = e.target;
   updatedStatus.classList.remove("list-table__attention");
   if (availableStatuses.includes(updatedStatus.textContent)) {
     var statusIndex = availableStatuses.indexOf(updatedStatus.textContent);
-    if (availableStatuses[statusIndex + 1] === "Completed") {
+    if (availableStatuses[statusIndex + 1] === "Complete") {
       updatedStatus.textContent = availableStatuses[(statusIndex - 1) % availableStatuses.length];
     } else {
       updatedStatus.textContent = availableStatuses[(statusIndex + 1) % availableStatuses.length];
@@ -145,7 +145,7 @@ var completeItem = function completeItem(e) {
   var status = currentRow.querySelector("td:nth-child(4)");
   status.classList.remove("list-table__attention");
   status.classList.add("list-table__greyed");
-  status.textContent = "Completed";
+  status.textContent = "Complete";
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (completeItem);
 

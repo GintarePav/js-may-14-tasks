@@ -10,7 +10,7 @@ const completeItem = (e) => {
   const status = currentRow.querySelector("td:nth-child(4)");
   status.classList.remove("list-table__attention");
   status.classList.add("list-table__greyed");
-  status.textContent = "Completed";
+  status.textContent = "Complete";
 };
 
 export default completeItem;
