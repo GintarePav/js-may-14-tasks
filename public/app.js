@@ -10,12 +10,20 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/addNewItem */ "./src/modules/addNewItem.js");
+/* harmony import */ var _modules_completeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/completeItem */ "./src/modules/completeItem.js");
 // console.log("test");
 
+
 document.getElementById("save-btn").addEventListener("click", function (e) {
-  console.log("button clicked");
   e.preventDefault();
   (0,_modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__["default"])();
+});
+document.querySelector("tbody").addEventListener("click", function (e) {
+  if (e.target.matches(".svg")) {
+    console.log("checkmark clicked");
+    e.preventDefault();
+    (0,_modules_completeItem__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
+  }
 });
 
 /***/ }),
@@ -35,7 +43,7 @@ var addNewItem = function addNewItem() {
     var itemRow = document.createElement("tr");
     var checkmark = document.createElement("th");
     checkmark.setAttribute("scope", "row");
-    checkmark.innerHTML = "<a href=\"#\" id=\"ckeckmark\" class=\"list-table__unchecked\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"16\"\n        height=\"16\"\n        fill=\"currentColor\"\n        class=\"bi bi-check\"\n        viewBox=\"0 0 16 16\"\n      >\n        <path d=\"M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z\" />\n      </svg>\n    </a>";
+    checkmark.innerHTML = "<svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width=\"30\"\n        height=\"30\"\n        fill=\"currentColor\"\n        class=\"bi bi-check list-table__unchecked svg\"\n        viewBox=\"0 0 16 16\"\n      >\n        <path d=\"M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z\" />\n      </svg>";
     itemRow.appendChild(checkmark);
     var taskTitle = document.createElement("td");
     taskTitle.textContent = document.getElementById("subject").value;
@@ -47,12 +55,38 @@ var addNewItem = function addNewItem() {
     itemStatus.textContent = document.getElementById("status").value;
     itemRow.appendChild(itemStatus);
     document.getElementById("table-body").appendChild(itemRow);
-    console.log("item added");
   } else {
     alert("All fields are required.");
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addNewItem);
+
+/***/ }),
+
+/***/ "./src/modules/completeItem.js":
+/*!*************************************!*\
+  !*** ./src/modules/completeItem.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var completeItem = function completeItem(e) {
+  var checkmark = e.target;
+  var currentRow = checkmark.closest("tr");
+  checkmark.classList.remove("list-table__unchecked");
+  checkmark.classList.add("list-table__checked");
+  var taskTitle = currentRow.querySelector("td:nth-child(2)");
+  taskTitle.classList.add("list-table__crossed", "list-table__greyed");
+  var dueDate = currentRow.querySelector("td:nth-child(3)");
+  dueDate.classList.add("list-table__greyed");
+  var status = currentRow.querySelector("td:nth-child(4)");
+  status.classList.add("list-table__greyed");
+  status.textContent = "Completed";
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (completeItem);
 
 /***/ }),
 

@@ -11966,6 +11966,16 @@ textarea.form-control-lg {
   }
 }
 .list-table__unchecked, .list-table__unchecked:link, .list-table__unchecked:visited, .list-table__unchecked:hover, .list-table__unchecked:active {
-  color: #708090;
+  color: #aeb7c1;
   cursor: pointer;
+}
+.list-table__checked, .list-table__checked:link, .list-table__checked:visited, .list-table__checked:hover, .list-table__checked:active {
+  color: #3e9c9f;
+  cursor: pointer;
+}
+.list-table__crossed {
+  text-decoration: line-through;
+}
+.list-table__greyed {
+  color: #aeb7c1 !important;
 }

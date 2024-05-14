@@ -1,5 +1,6 @@
 @import '~bootstrap';
-$grey: #708090;
+$grey: #aeb7c1;
+$teal: #3e9c9f;
 
 .list-table {
 
@@ -11,4 +12,23 @@ $grey: #708090;
         color: $grey;
         cursor: pointer;
     }
+
+    &__checked,
+    &__checked:link,
+    &__checked:visited,
+    &__checked:hover,
+    &__checked:active {
+        color: $teal;
+        cursor: pointer;
+    }
+
+    &__crossed {
+        text-decoration: line-through;
+    }
+
+    &__greyed {
+        color: $grey !important;
+    }
+
+
 }
