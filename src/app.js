@@ -3,10 +3,12 @@ import addNewItem from "./modules/addNewItem";
 import completeItem from "./modules/completeItem";
 import reverseCompletion from "./modules/completionReverse";
 import changeStatus from "./modules/changeStatus";
+import saveTable from "./modules/saveToLocalStorage";
 
 document.getElementById("save-btn").addEventListener("click", (e) => {
   e.preventDefault();
   addNewItem();
+  saveTable();
 });
 
 document.querySelector("tbody").addEventListener("click", (e) => {
@@ -14,8 +16,10 @@ document.querySelector("tbody").addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target.classList.contains("list-table__unchecked")) {
       completeItem(e);
+      saveTable();
     } else {
       reverseCompletion(e);
+      saveTable();
     }
   }
   if (
@@ -23,5 +27,11 @@ document.querySelector("tbody").addEventListener("click", (e) => {
     !e.target.classList.contains("list-table__greyed")
   ) {
     changeStatus(e);
+    saveTable();
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("table-body").innerHTML =
+    localStorage.getItem("tableBody");
 });

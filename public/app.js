@@ -13,7 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_completeItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/completeItem */ "./src/modules/completeItem.js");
 /* harmony import */ var _modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/completionReverse */ "./src/modules/completionReverse.js");
 /* harmony import */ var _modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/changeStatus */ "./src/modules/changeStatus.js");
+/* harmony import */ var _modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/saveToLocalStorage */ "./src/modules/saveToLocalStorage.js");
 // console.log("test");
+
 
 
 
@@ -21,19 +23,26 @@ __webpack_require__.r(__webpack_exports__);
 document.getElementById("save-btn").addEventListener("click", function (e) {
   e.preventDefault();
   (0,_modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
 });
 document.querySelector("tbody").addEventListener("click", function (e) {
   if (e.target.matches("svg")) {
     e.preventDefault();
     if (e.target.classList.contains("list-table__unchecked")) {
       (0,_modules_completeItem__WEBPACK_IMPORTED_MODULE_1__["default"])(e);
+      (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
     } else {
       (0,_modules_completionReverse__WEBPACK_IMPORTED_MODULE_2__["default"])(e);
+      (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
     }
   }
   if (e.target.matches("td:nth-child(4)") && !e.target.classList.contains("list-table__greyed")) {
     (0,_modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__["default"])(e);
+    (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
   }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("table-body").innerHTML = localStorage.getItem("tableBody");
 });
 
 /***/ }),
@@ -154,6 +163,23 @@ var reverseCompletion = function reverseCompletion(e) {
   status.classList.add("list-table__attention");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reverseCompletion);
+
+/***/ }),
+
+/***/ "./src/modules/saveToLocalStorage.js":
+/*!*******************************************!*\
+  !*** ./src/modules/saveToLocalStorage.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var saveTable = function saveTable() {
+  localStorage.setItem("tableBody", document.getElementById("table-body").innerHTML);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (saveTable);
 
 /***/ }),
 
