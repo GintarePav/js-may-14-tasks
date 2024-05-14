@@ -93,7 +93,7 @@ var changeStatus = function changeStatus(e) {
   if (availableStatuses.includes(updatedStatus.textContent)) {
     var statusIndex = availableStatuses.indexOf(updatedStatus.textContent);
     if (availableStatuses[statusIndex + 1] === "Completed") {
-      updatedStatus.textContent = availableStatuses[(statusIndex + 0) % availableStatuses.length];
+      updatedStatus.textContent = availableStatuses[(statusIndex - 1) % availableStatuses.length];
     } else {
       updatedStatus.textContent = availableStatuses[(statusIndex + 1) % availableStatuses.length];
     }

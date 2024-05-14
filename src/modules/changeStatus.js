@@ -8,7 +8,7 @@ const changeStatus = (e) => {
     let statusIndex = availableStatuses.indexOf(updatedStatus.textContent);
     if (availableStatuses[statusIndex + 1] === "Completed") {
       updatedStatus.textContent =
-        availableStatuses[(statusIndex + 0) % availableStatuses.length];
+        availableStatuses[(statusIndex - 1) % availableStatuses.length];
     } else {
       updatedStatus.textContent =
         availableStatuses[(statusIndex + 1) % availableStatuses.length];
