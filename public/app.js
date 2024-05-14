@@ -15,7 +15,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_changeStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/changeStatus */ "./src/modules/changeStatus.js");
 /* harmony import */ var _modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/saveToLocalStorage */ "./src/modules/saveToLocalStorage.js");
 /* harmony import */ var _modules_deleteTask__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/deleteTask */ "./src/modules/deleteTask.js");
+/* harmony import */ var _modules_resetInputValues__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/resetInputValues */ "./src/modules/resetInputValues.js");
 // console.log("test");
+
 
 
 
@@ -26,6 +28,7 @@ document.getElementById("save-btn").addEventListener("click", function (e) {
   e.preventDefault();
   (0,_modules_addNewItem__WEBPACK_IMPORTED_MODULE_0__["default"])();
   (0,_modules_saveToLocalStorage__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  (0,_modules_resetInputValues__WEBPACK_IMPORTED_MODULE_6__["default"])();
 });
 document.querySelector("tbody").addEventListener("click", function (e) {
   if (e.target.matches(".svg")) {
@@ -190,6 +193,25 @@ var removeTask = function removeTask(e) {
   rowToRemove.remove();
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (removeTask);
+
+/***/ }),
+
+/***/ "./src/modules/resetInputValues.js":
+/*!*****************************************!*\
+  !*** ./src/modules/resetInputValues.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var resetInputValues = function resetInputValues() {
+  document.getElementById("subject").value = "";
+  document.getElementById("due-date").value = "";
+  document.getElementById("status").value = "";
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (resetInputValues);
 
 /***/ }),
 

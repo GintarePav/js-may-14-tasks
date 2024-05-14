@@ -5,11 +5,13 @@ import reverseCompletion from "./modules/completionReverse";
 import changeStatus from "./modules/changeStatus";
 import saveTable from "./modules/saveToLocalStorage";
 import removeTask from "./modules/deleteTask";
+import resetInputValues from "./modules/resetInputValues";
 
 document.getElementById("save-btn").addEventListener("click", (e) => {
   e.preventDefault();
   addNewItem();
   saveTable();
+  resetInputValues();
 });
 
 document.querySelector("tbody").addEventListener("click", (e) => {
