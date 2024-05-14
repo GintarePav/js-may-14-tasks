@@ -11965,6 +11965,60 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.intro {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.intro h1, .intro .h1 {
+  width: 80%;
+  height: -moz-max-content;
+  height: max-content;
+  text-align: center;
+  margin: 30px 0px;
+}
+.intro ol {
+  width: 80%;
+  height: -moz-max-content;
+  height: max-content;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+.intro ol li {
+  padding: 10px;
+}
+.intro__main-button, .intro__main-button:link, .intro__main-button:visited, .intro__main-button:hover, .intro__main-button:active, .intro__main-button:focus, .intro__main-button:focus:not(:focus-visible) {
+  background-color: #3e9c9f;
+  color: #ffffff;
+  border: 1px solid #3e9c9f;
+}
+.intro__secondary-button, .intro__secondary-button:hover, .intro__secondary-button:focus, .intro__secondary-button:focus:not(:focus-visible) {
+  background-color: #8ea8a9;
+  color: #ffffff;
+  border: 1px solid #8ea8a9;
+}
+
+.list-table {
+  width: 80%;
+  height: -moz-max-content;
+  height: max-content;
+  margin: auto;
+  margin-top: 30px;
+}
+.list-table thead tr th {
+  background-color: #cbdddd;
+}
 .list-table__clickable {
   cursor: pointer;
 }

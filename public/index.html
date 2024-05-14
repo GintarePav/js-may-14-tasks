@@ -9,18 +9,25 @@
   <body>
     <section class="intro">
       <h1>Your Personal To-do List is Here!</h1>
-      <p>
-        Click the button below to fill in all the necessary details in a pop-up
-        form to add an item to your list.
-      </p>
-      <p>
-        Once you've completed one of your items, just press on a checkmark next
-        to it, and we'll register it as completed.
-      </p>
-    </section>
-    <section class="form-modal">
+      <ol>
+        <li>
+          Click the button below to fill in all the necessary details in a
+          pop-up form to add a task to your list.
+        </li>
+        <li>
+          You can click on your new task's status to change it to "In progress".
+        </li>
+        <li>
+          Once you've completed a task, just press on a checkmark next to it,
+          and we'll register it as completed.
+        </li>
+        <li>
+          If you want to undo the completion of a task, click on the checkmark
+          again. Be sure to review its status afterwards.
+        </li>
+      </ol>
       <a
-        class="btn btn-primary"
+        class="intro__main-button btn"
         data-bs-toggle="modal"
         data-bs-target="#add-item-form"
         id="add-item-btn"
@@ -85,12 +92,16 @@
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn intro__secondary-button"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" id="save-btn">
+              <button
+                type="button"
+                class="btn intro__main-button"
+                id="save-btn"
+              >
                 Save
               </button>
             </div>
@@ -104,7 +115,7 @@
           <tr>
             <th scope="col"></th>
             <th scope="col">Subject</th>
-            <th scope="col">Due Date</th>
+            <th scope="col">Due</th>
             <th scope="col">Status</th>
           </tr>
         </thead>

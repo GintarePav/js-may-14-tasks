@@ -1,10 +1,81 @@
 @import '~bootstrap';
-$grey: #aeb7c1;
-$teal: #3e9c9f;
-$pink: #d87093;
+$inactive: #aeb7c1;
+$main: #3e9c9f;
+$attention: #d87093;
+$white: #ffffff;
+$secondary: #8ea8a9;
+$table-header: #cbdddd;
 
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+@mixin size($size-width, $size-height) {
+    width: $size-width;
+    height: $size-height
+}
+
+@mixin flex($flex-direction, $flex-justify, $flex-align) {
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $flex-justify;
+    align-items: $flex-align;
+    flex-wrap: wrap;
+}
+
+.intro {
+    @include size(100%, max-content);
+    @include flex(column, center, center);
+
+    h1 {
+        @include size(80%, max-content);
+        text-align: center;
+        margin: 30px 0px;
+    }
+
+    ol {
+        @include size(80%, max-content);
+        text-align: justify;
+        margin-bottom: 30px;
+
+        li {
+            padding: 10px;
+        }
+    }
+
+    &__main-button,
+    &__main-button:link,
+    &__main-button:visited,
+    &__main-button:hover,
+    &__main-button:active,
+    &__main-button:focus,
+    &__main-button:focus:not(:focus-visible) {
+        background-color: $main;
+        color: $white;
+        border: 1px solid $main;
+    }
+
+    &__secondary-button,
+    &__secondary-button:hover,
+    &__secondary-button:focus,
+    &__secondary-button:focus:not(:focus-visible) {
+        background-color: $secondary;
+        color: $white;
+        border: 1px solid $secondary;
+    }
+}
 
 .list-table {
+    @include size(80%, max-content);
+    margin: auto;
+    margin-top: 30px;
+
+    thead tr th {
+        background-color: $table-header;
+    }
+
     &__clickable {
         cursor: pointer;
     }
@@ -14,7 +85,7 @@ $pink: #d87093;
     &__unchecked:visited,
     &__unchecked:hover,
     &__unchecked:active {
-        color: $grey;
+        color: $inactive;
         cursor: pointer;
     }
 
@@ -23,7 +94,7 @@ $pink: #d87093;
     &__checked:visited,
     &__checked:hover,
     &__checked:active {
-        color: $teal;
+        color: $main;
         cursor: pointer;
     }
 
@@ -32,11 +103,11 @@ $pink: #d87093;
     }
 
     &__greyed {
-        color: $grey !important;
+        color: $inactive !important;
     }
 
     &__attention {
-        color: $pink !important;
+        color: $attention !important;
         font-weight: bold;
     }
 }
